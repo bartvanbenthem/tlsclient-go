@@ -11,6 +11,7 @@ import (
 )
 
 var (
+	url      = flag.String("url", "https://api/url", "URL to request")
 	certFile = flag.String("cert", "path to pem file", "A PEM eoncoded certificate file.")
 	keyFile  = flag.String("key", "path to pem file", "A PEM encoded private key file.")
 	caFile   = flag.String("CA", "path to pem file", "A PEM eoncoded CA's certificate file.")
@@ -43,8 +44,8 @@ func main() {
 	transport := &http.Transport{TLSClientConfig: tlsConfig}
 	client := &http.Client{Transport: transport}
 
-	// Do GET something
-	resp, err := client.Get("https://api/url")
+	// GET Request
+	resp, err := client.Get(*url)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -56,7 +57,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var output []PatchStatus
+	var output []string
 	err = json.Unmarshal(data, &output)
 	if err != nil {
 		panic(err)
