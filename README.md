@@ -1,2 +1,2 @@
 # tlsclientgo
-TLS client example in Golang
+TLS client function in Golang
