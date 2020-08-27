@@ -1,3 +1,3 @@
-module github.com/bartvanbenthem/tlsclientgo
+module github.com/bartvanbenthem/tlsclient-go
 
 go 1.13
